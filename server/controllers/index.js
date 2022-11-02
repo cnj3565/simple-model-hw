@@ -257,7 +257,7 @@ const updateLast = (req, res) => {
 // variables & functions for dogs -----------------------------------------------------------------
 const setDogName = async (req, res) => {
   console.log(req.body);
-  
+
   if (!req.body.firstname || !req.body.lastname || !req.body.breed || !req.body.age) {
     // If they are missing data, send back an error.
     return res.status(400).json({ error: 'firstname, lastname, breed, and age are all required' });
@@ -318,7 +318,6 @@ const notFound = (req, res) => {
     page: req.url,
   });
 };
-
 
 // export the relevant public controller functions
 module.exports = {
