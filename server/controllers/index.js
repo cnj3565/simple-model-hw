@@ -2,9 +2,7 @@
 const models = require('../models');
 
 // get the Cat model
-const { Cat } = models.Cat;
-
-const { Dog } = models.Dog;
+const { Cat, Dog } = models;
 
 // default fake data so that we have something to work with until we make a real Cat
 const defaultData = {
@@ -258,9 +256,11 @@ const updateLast = (req, res) => {
 
 // variables & functions for dogs -----------------------------------------------------------------
 const setDogName = async (req, res) => {
+  console.log(req.body);
+  
   if (!req.body.firstname || !req.body.lastname || !req.body.breed || !req.body.age) {
     // If they are missing data, send back an error.
-    return res.status(400).json({ error: 'firstname, lastname breed, and age are all required' });
+    return res.status(400).json({ error: 'firstname, lastname, breed, and age are all required' });
   }
 
   const dogData = {
@@ -306,6 +306,7 @@ const searchDogName = async (req, res) => {
   }
 
   // increase Dog's age
+  doc.age++;
 
   // Otherwise, we got a result and will send it back to the user.
   return res.json({ name: doc.name, breed: doc.breed, age: doc.age });
